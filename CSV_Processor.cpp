@@ -1,14 +1,25 @@
+/*
+ * This program takes an input CSV file and outputs a modified version of the file
+ * with lowercase column headers, removed spaces from headers, and replaced "true"
+ * and "false" values with "1" and "0" respectively. Additionally, it converts
+ * column values to lowercase and replaces spaces with underscores.
+ *
+ * Author: Kylar Sorensen
+ * Date: 02/20/2023
+ */
+
 #include <iostream>
 #include <fstream>
 #include <vector>
 #include <string>
 #include <algorithm>
-#include <sstream>
 #include "config.h"
 
 using namespace std;
 
 // Function to remove whitespace from a string
+// Input: a string with whitespace
+// Output: the input string with whitespace removed
 string removeWhitespace(string str)
 {
     str.erase(remove_if(str.begin(), str.end(), [](char c)
@@ -107,7 +118,7 @@ int main()
         column = line.substr(lastPos);
         columns.push_back(column);
 
-        // Write the modified line to the output CSV file
+        // Modified lines as necessary and write them to the output CSV file
         for (size_t i = 0; i < columns.size(); i++)
         {
             if (i == 9)
@@ -129,6 +140,8 @@ int main()
             }
             else
             {
+                // Convert the column to lowercase and replace spaces with underscores.
+                // Then, write the modified column to the output CSV file.
                 string column = columns[i];
                 transform(column.begin(), column.end(), column.begin(), [](unsigned char c)
                           { return tolower(c); });
