@@ -37,7 +37,7 @@ string removeWhitespace(string str)
 
 int main()
 {
-    // Open the input CSV file
+    // Open the input CSV file, using the file path defined in the config file
     ifstream inputFile(INPUT_FILE_PATH);
     if (!inputFile.is_open())
     {
@@ -49,7 +49,7 @@ int main()
         cout << "Input file opened successfully." << endl;
     }
 
-    // Open the output CSV file
+    // Open the output CSV file, using the file path defined in the config file
     ofstream outputFile(OUTPUT_FILE_PATH);
     if (!outputFile.is_open())
     {
